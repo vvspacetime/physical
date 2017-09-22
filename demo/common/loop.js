@@ -15,8 +15,8 @@ const mainLoop = () => {
     setInterval(() => {
         if (!pause) {
             update(timeInterval);
-            display();
         }
+        display();
     },timeInterval*1000);
 };
 

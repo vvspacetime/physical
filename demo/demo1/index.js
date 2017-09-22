@@ -40,7 +40,11 @@ const update = (timeInterval) => {
     const splitCount = 100;
     const splitTime = timeInterval/splitCount;
 
-    let lastX1, lastY1, lastX2, lastY2;
+    let lastX1 = boll1.x,
+        lastY1 = boll1.y,
+        lastX2 = boll2.x,
+        lastY2 = boll2.y;
+
     for (let i = 0; i < splitCount;){
         let fx = 0;
         let fy = 0;
@@ -48,12 +52,13 @@ const update = (timeInterval) => {
         //碰撞检测
         if (checkBollPong(boll1, boll2)){
             balance(boll1, boll2);
-            log("速度1", boll1.vx, boll1.vy);
-            log("速度2", boll2.vx, boll2.vy);
+
             boll1.x = lastX1;
             boll1.y = lastY1;
             boll2.x = lastX2;
             boll2.y = lastY2;
+            log("速度1", boll1.vx, boll1.vy);
+            log("速度2", boll2.vx, boll2.vy);
         }else {
             lastX1 = boll1.x;
             lastY1 = boll1.y;
@@ -102,8 +107,9 @@ const CoordinateSystem =  (x1, y1, x2, y2) => {
     let pi = Math.PI;
     let v = Vector((x2-x1),(y2-y1));
     let angle = Math.atan(Math.abs(v.x / v.y)); //与y负轴夹脚
+    //todo bug 与x轴夹脚很小的时候
     if (v.x > 0 && v.y > 0) {
-        angle = angle + pi / 2;
+        angle = pi - angle;
     }else if(v.x < 0 && v.y > 0) {
         angle = angle + pi;
     }else if(v.x < 0 && v.y < 0) {
@@ -112,7 +118,8 @@ const CoordinateSystem =  (x1, y1, x2, y2) => {
         angle = angle;
     }
     c.angle = angle;
-    log("碰撞角度", angle);
+    let ap =  angle / 2 / pi * 360;
+    log("碰撞角度", ap);
     let sinA = Math.sin(angle);
     let cosA = Math.cos(angle);
 
@@ -159,16 +166,31 @@ const calculatePerfectPong = (m1,m2,v1,v2) => {
 const bindEvents = () => {
     let target = null;
     canvas.addEventListener("mousedown", event => {
-        //todo set target
+        let p = getPoint(event);
+        if (Utils.CommonUtils.calculateDistance(p.x, p.y, boll1.x, boll1.y) <= boll1.radius){
+            target = boll1;
+            log("g");
+        }else {
+
+        }
     });
 
-    canvas.addEventListener("mouse", event => {
-        //todo move target
+    canvas.addEventListener("mousemove", event => {
+        if (target) {
+            // log("move",event);
+            let p = getPoint(event);
+            target.x = p.x;
+            target.y = p.y;
+        }
     });
 
     canvas.addEventListener("mouseup", event => {
-        //todo reset target
+        target = null;
     });
+
+    const getPoint = event => {
+        return Utils.DrawUtils.transformRect(event.offsetX, event.offsetY) ;
+    };
 };
 
 const __main = () => {
