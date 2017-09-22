@@ -1,5 +1,6 @@
 var canvas  = document.getElementById("board");
 var context = canvas.getContext("2d");
+var pause = true;
 const log = console.log.bind(console);
 
 const clear = () => {
@@ -12,7 +13,16 @@ const mainLoop = () => {
     Utils.DrawUtils.setCanvas(canvas);
 
     setInterval(() => {
-        update(timeInterval);
-        display();
+        if (!pause) {
+            update(timeInterval);
+            display();
+        }
     },timeInterval*1000);
 };
+
+
+window.addEventListener('keydown', event => {
+    if (event.key == "p") {
+        pause = !pause;
+    }
+});
