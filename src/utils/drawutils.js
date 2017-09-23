@@ -2,13 +2,15 @@
  * Created by spacetime on 6/3/17.
  */
 class DrawUtils{
-    static drawCircle(x,y,r){
+    static drawCircle(x,y,r,color){
+        let context = DrawUtils.context;
         var drawX = DrawUtils.transformRect(x,y).x;
         var drawY = DrawUtils.transformRect(x,y).y;
-        DrawUtils.context.beginPath();
-        DrawUtils.context.arc(drawX,drawY,r,
+        context.beginPath();
+        context.arc(drawX,drawY,r,
                             0,Math.PI*2,true);
-        DrawUtils.context.stroke();
+        context.strokeStyle = color;
+        context.stroke();
     }
 
     static transformRect(x,y) {

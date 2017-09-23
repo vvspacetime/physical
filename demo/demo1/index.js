@@ -44,7 +44,7 @@ const update = (timeInterval) => {
         lastY1 = boll1.y,
         lastX2 = boll2.x,
         lastY2 = boll2.y;
-
+    
     for (let i = 0; i < splitCount;){
         let fx = 0;
         let fy = 0;

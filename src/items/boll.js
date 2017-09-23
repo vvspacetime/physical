@@ -10,7 +10,7 @@ class Boll extends Item{
 
 
     display(){
-        DrawUtils.drawCircle(this.x,this.y,this.radius);
+        DrawUtils.drawCircle(this.x,this.y,this.radius,this.color);
     }
 
 

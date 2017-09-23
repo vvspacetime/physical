@@ -10,11 +10,15 @@ const clear = () => {
 const mainLoop = () => {
     let fps = 30;
     let timeInterval = 1/fps; //单位 s
+    const updateCount = 30; //一次运行30次
     Utils.DrawUtils.setCanvas(canvas);
 
+    log("main loop");
     setInterval(() => {
         if (!pause) {
-            update(timeInterval);
+            for (let i = 0; i < updateCount; i ++){
+                update(timeInterval);
+            }
         }
         display();
     },timeInterval*1000);
