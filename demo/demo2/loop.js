@@ -6,8 +6,12 @@ var contextBottom = canvasBottom.getContext("2d");
 var pause = true;
 const log = console.log.bind(console);
 
-const clear = () => {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+const clearTop = () => {
+    contextTop.clearRect(0, 0, canvasTop.width, canvasTop.height);
+};
+
+const clearBottom = () => {
+    contextBottom.clearRect(0, 0, canvasBottom.width, canvas.canvasBottom.height);
 };
 
 const mainLoop = () => {
