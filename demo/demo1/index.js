@@ -107,7 +107,6 @@ const CoordinateSystem =  (x1, y1, x2, y2) => {
     let pi = Math.PI;
     let v = Vector((x2-x1),(y2-y1));
     let angle = Math.atan(Math.abs(v.x / v.y)); //与y负轴夹脚
-    //todo bug 与x轴夹脚很小的时候
     if (v.x > 0 && v.y > 0) {
         angle = pi - angle;
     }else if(v.x < 0 && v.y > 0) {
