@@ -14,6 +14,8 @@ let dir = true; //向上
 var boll = new Item.Boll(bollConstrains);
 var gEnv = new Environment.Gravitation(150, -1000, 100000);
 
+let score = 0;
+
 
 const displayBoll = () => {
     log(boll.x, boll.y);
@@ -89,9 +91,12 @@ const update = (timeInterval) => {
 
         if (boll.y > highLineY || boll.y < lowLineY) {
             pause = true;
+            score = 0;
         }
     }
-    
+
+    score ++;
+    document.querySelector("#score").textContent = score;    
 }
 
 

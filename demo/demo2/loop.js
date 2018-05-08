@@ -1,5 +1,5 @@
-var canvasTop  = document.getElementById("layer1");
-var canvasBottom  = document.getElementById("layer2");
+var canvasTop  = document.getElementById("layer2");
+var canvasBottom  = document.getElementById("layer1");
 var contextTop = canvasTop.getContext("2d");
 var contextBottom = canvasBottom.getContext("2d");
 
@@ -18,7 +18,7 @@ const mainLoop = () => {
     let fps = 30;
     let timeInterval = 1/fps; //单位 s
     const updateCount = 30; //一次运行30次
-    Utils.DrawUtils.setCanvas(canvas);
+    Utils.DrawUtils.setCanvas(canvasTop);
 
     log("main loop");
     setInterval(() => {

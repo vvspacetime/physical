@@ -3,13 +3,13 @@ var bolls = [];
 const displayTrack = () => {
     for (let b of bolls) {
         let track = b.track;
-        context.strokeStyle = b.color;
-        context.beginPath();
+        contextBottom.strokeStyle = b.color;
+        contextBottom.beginPath();
         for(let point of track){
             let r = Utils.DrawUtils.transformRect(point.x,point.y);
             context.lineTo(r.x,r.y);
         }
-        context.stroke();
+        contextBottom.stroke();
     }
 };
 
@@ -20,7 +20,7 @@ const displayBoll = () => {
 };
 
 const display = () => {
-    clear();
+    clearTop();
     displayBoll();
     displayTrack();
 };

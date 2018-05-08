@@ -5,7 +5,7 @@ class Item{
         this.y          = ctor.y;
         this.vx         = ctor.vx;
         this.vy         = ctor.vy;
-        this.color      = ctor.color;
+        this.color      = ctor.color || "black";
     }
 
     move(fx,fy,ms){

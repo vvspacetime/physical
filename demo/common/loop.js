@@ -1,5 +1,6 @@
 var canvas  = document.getElementById("board");
 var context = canvas.getContext("2d");
+Utils.DrawUtils.setCanvas(canvas);
 var pause = true;
 const log = console.log.bind(console);
 
@@ -10,8 +11,7 @@ const clear = () => {
 const mainLoop = () => {
     let fps = 30;
     let timeInterval = 1/fps; //单位 s
-    const updateCount = 30; //一次运行30次
-    Utils.DrawUtils.setCanvas(canvas);
+    const updateCount = 1; //一次运行30次
 
     log("main loop");
     setInterval(() => {
@@ -21,7 +21,7 @@ const mainLoop = () => {
             }
         }
         display();
-    },timeInterval*1000);
+    }, timeInterval*1000);
 };
 
 

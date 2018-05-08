@@ -18,14 +18,14 @@ class CommonUtils{
 
     //计算点和直线之间的距离
     static calculateDistancePointAndLine(p, pa, pb) {
-        let pa= this.calculateDistancePointAndPoint(p, pa);
-        let pb= this.calculateDistancePointAndPoint(p, pb);
-        let ab= this.calculateDistancePointAndPoint(pa, pb);
-        if (pa * pa >= pb * pb + ab * ab) return pb;
-        if (pb * pb >= pa * pa + ab * ab) return b;
-        let p = (pa + pb + ab) / 2;
-        let s = Math.sqrt(p * (p - pa) * (p - pb) * (p - ab));  //海伦公式求面积
-        return 2 * s / ab;
+        // let pa= this.calculateDistancePointAndPoint(p, pa);
+        // let pb= this.calculateDistancePointAndPoint(p, pb);
+        // let ab= this.calculateDistancePointAndPoint(pa, pb);
+        // if (pa * pa >= pb * pb + ab * ab) return pb;
+        // if (pb * pb >= pa * pa + ab * ab) return b;
+        // let p = (pa + pb + ab) / 2;
+        // let s = Math.sqrt(p * (p - pa) * (p - pb) * (p - ab));  //海伦公式求面积
+        // return 2 * s / ab;
     }
 }
 
